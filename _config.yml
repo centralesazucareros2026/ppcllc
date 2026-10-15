@@ -1,7 +1,7 @@
-title: "Mi Blog"
-description: "Artículos, noticias y análisis."
-url: "https://example.com"
-baseurl: ""
+title: "Pedroso Publishing"
+description: "Publicación de libros, autopublicación, marketing editorial e inteligencia artificial para autores."
+url: "https://centralesazucaceros2026.github.io"
+baseurl: "/ppcll"
 lang: es
 timezone: America/New_York
 markdown: kramdown
@@ -16,7 +16,7 @@ defaults:
       type: "posts"
     values:
       layout: post
-      author: "Redacción"
+      author: "Pedroso Publishing"
       image: ""
 exclude:
   - README.md
