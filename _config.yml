@@ -1,0 +1,24 @@
+title: "Mi Blog"
+description: "Artículos, noticias y análisis."
+url: "https://example.com"
+baseurl: ""
+lang: es
+timezone: America/New_York
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+paginate: 10
+paginate_path: "/page:num/"
+plugins:
+  - jekyll-paginate
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      author: "Redacción"
+      image: ""
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

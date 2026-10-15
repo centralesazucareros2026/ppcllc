@@ -1,0 +1,31 @@
+---
+layout: default
+title: Inicio
+---
+<section class="intro">
+  <p class="eyebrow">ARTÍCULOS RECIENTES</p>
+  <h1>Ideas, historias y actualidad.</h1>
+  <p>Lee las últimas publicaciones y explora el archivo del blog.</p>
+</section>
+
+<section aria-label="Artículos recientes" class="post-grid">
+  {% for post in paginator.posts %}
+  <article class="post-card">
+    <p class="meta">{{ post.date | date: "%d/%m/%Y" }}{% if post.categories.size > 0 %} · {{ post.categories | join: ", " }}{% endif %}</p>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 190 }}</p>{% endif %}
+    <a class="read-more" href="{{ post.url | relative_url }}">Leer artículo →</a>
+  </article>
+  {% endfor %}
+  {% if paginator.posts.size == 0 %}
+  <p>Aún no hay artículos. Añade el primero en la carpeta <code>_posts</code>.</p>
+  {% endif %}
+</section>
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="Paginación">
+  {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← Más recientes</a>{% endif %}
+  <span>Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">Más antiguos →</a>{% endif %}
+</nav>
+{% endif %}
