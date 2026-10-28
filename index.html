@@ -1,28 +1,335 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redirigiendo a Publica Tu Libro Hoy</title>
-  <meta name="description" content="Accede a recursos y servicios para publicar tu libro con PublicaTuLibroHoy.com.">
-  <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="https://www.publicatulibrohoy.com/">
-  <meta http-equiv="refresh" content="0; url=https://www.publicatulibrohoy.com/">
-  <script>
-    window.location.replace("https://www.publicatulibrohoy.com/");
-  </script>
+  <title>AutoPublicaHoy | Servicios editoriales para publicar tu libro</title>
+  <meta name="description" content="Prepara tu manuscrito para publicar. Servicios editoriales, formato de interiores y asesoría práctica para autores independientes.">
+  <meta name="theme-color" content="#142a3a">
+  <link rel="canonical" href="https://autopublicahoy.com/">
   <style>
-    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f3eb;color:#172b3a;font:16px/1.6 Arial,Helvetica,sans-serif}
-    main{max-width:620px;margin:24px;padding:36px;background:#fffdf8;border:1px solid #d7cdbd;text-align:center}
-    h1{line-height:1.2}
-    a{color:#172b3a;font-weight:bold}
+    :root{--navy:#142a3a;--navy2:#203d50;--gold:#d4ad66;--cream:#f7f4ee;--paper:#fff;--ink:#17232c;--muted:#52616b;--line:#e2ddd3;--green:#2d6154}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.65 Arial,Helvetica,sans-serif}
+    a{color:inherit}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .topbar{height:5px;background:var(--gold)}
+    header{background:var(--navy);color:white}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{text-decoration:none;font-size:1.1rem;font-weight:800;letter-spacing:.01em;line-height:1.15}
+    .logo span{display:block;color:var(--gold);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin-top:5px}
+    nav{display:flex;align-items:center;gap:23px;flex-wrap:wrap}
+    nav a{font-size:.88rem;text-decoration:none;color:#e4eaf0}
+    nav a:hover{color:var(--gold)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:4px;text-decoration:none;font-weight:700;transition:transform .15s,background .15s}
+    .nav-cta{padding:10px 15px;background:var(--gold);color:#142a3a}
+    .btn{padding:14px 20px;background:var(--gold);color:#142a3a;border:1px solid var(--gold)}
+    .btn.secondary{background:transparent;color:white;border-color:#8c9ca6}
+    .btn.dark{background:var(--navy);border-color:var(--navy);color:white}
+    .btn:hover,.nav-cta:hover{transform:translateY(-2px)}
+    .hero{background:radial-gradient(ellipse at 75% 10%,rgba(212,173,102,.19),transparent 35%),linear-gradient(130deg,var(--navy),var(--navy2));color:white;padding:78px 0 76px}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:54px}
+    .eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#a67a32}
+    .hero .eyebrow{color:var(--gold)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.6rem,5.4vw,4.8rem);line-height:1.04;letter-spacing:-.045em;margin:17px 0 22px;max-width:760px}
+    .hero p{font-size:1.12rem;color:#e4ebef;max-width:650px;margin-bottom:28px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-note{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);padding:25px;border-radius:8px}
+    .hero-note .big{font-size:2.1rem;font-weight:800;color:var(--gold);line-height:1.1}
+    .hero-note h2{font-size:1.1rem;margin:13px 0 9px}
+    .hero-note p{font-size:.92rem;margin:0;color:#d9e1e6}
+    .trust{background:var(--cream);border-bottom:1px solid var(--line)}
+    .trust-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:22px 0}
+    .trust-item{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:#34434d}
+    .trust-item b{display:block;color:var(--ink)}
+    .check{display:inline-grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border-radius:50%;background:#e8dfcc;color:#72501e;font-weight:800}
+    section.content{padding:74px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 36px}
+    .section-head h2{font-size:clamp(2rem,3.7vw,3rem);line-height:1.15;letter-spacing:-.03em;margin:10px 0 13px}
+    .section-head p{color:var(--muted);margin-bottom:0}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{border:1px solid var(--line);border-radius:7px;padding:27px 25px;display:flex;flex-direction:column;background:white}
+    .service.featured{border:2px solid var(--gold);background:#fffdf8;position:relative}
+    .tag{display:inline-block;align-self:flex-start;background:#f1e6d1;color:#6c4b18;border-radius:3px;padding:4px 8px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+    .service h3{font-size:1.3rem;line-height:1.25;margin-bottom:8px}
+    .price{font-size:1.65rem;font-weight:800;color:var(--navy);margin:8px 0 13px}
+    .price small{display:block;font-size:.76rem;font-weight:400;color:var(--muted);line-height:1.5}
+    .service p{color:var(--muted);font-size:.92rem}
+    .service ul{padding-left:19px;margin:0 0 24px;color:#33434c;font-size:.9rem}
+    .service li{margin:7px 0}
+    .service .btn{margin-top:auto;align-self:flex-start}
+    .note{font-size:.82rem;color:var(--muted);margin:20px auto 0;max-width:850px;text-align:center}
+    .feature-band{background:var(--cream)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .two-col h2{font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.15;letter-spacing:-.03em;margin:12px 0 18px}
+    .two-col p{color:var(--muted)}
+    .steps{display:grid;gap:16px}
+    .step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start}
+    .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:white;font-weight:800}
+    .step h3{font-size:1rem;margin:3px 0 4px}
+    .step p{font-size:.9rem;margin:0;color:var(--muted)}
+    .leadbox{background:var(--navy);color:white;border-radius:8px;padding:34px}
+    .leadbox .eyebrow{color:var(--gold)}
+    .leadbox h2{font-size:2rem;line-height:1.15;margin:10px 0}
+    .leadbox p{color:#d9e2e7}
+    .leadbox ul{padding-left:20px;color:#e8edf0}
+    .leadbox .btn{margin-top:8px}
+    .resource{background:white;border:1px solid var(--line);padding:28px;border-radius:7px}
+    .resource h3{font-size:1.35rem;margin:10px 0}
+    .resource p{color:var(--muted)}
+    .resource a{font-weight:800;color:var(--green);text-underline-offset:3px}
+    .faq{max-width:850px;margin:auto}
+    details{border-bottom:1px solid var(--line);padding:18px 0}
+    summary{cursor:pointer;font-weight:800}
+    details p{margin:12px 0 0;color:var(--muted)}
+    .contact{background:var(--cream)}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+    .contact h2{font-size:clamp(2rem,3.5vw,2.7rem);line-height:1.15;letter-spacing:-.03em;margin:10px 0 14px}
+    .contact p{color:var(--muted)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:15px;background:white;padding:27px;border:1px solid var(--line);border-radius:7px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field.full{grid-column:1/-1}
+    label{font-size:.83rem;font-weight:700}
+    input,select,textarea{font:inherit;font-size:.92rem;padding:12px;border:1px solid #c9cfd2;border-radius:4px;width:100%;background:white;color:var(--ink)}
+    textarea{min-height:105px;resize:vertical}
+    .form-foot{grid-column:1/-1;font-size:.78rem;color:var(--muted);margin:0}
+    .form-status{grid-column:1/-1;font-size:.9rem;margin:0}
+    button{cursor:pointer;font:inherit}
+    footer{background:#0e202d;color:#cbd6dc;padding:30px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:25px;align-items:center;flex-wrap:wrap}
+    footer p{font-size:.82rem;margin:5px 0 0}
+    footer a{color:#f0d8a8}
+    .disclaimer{max-width:720px;font-size:.75rem;color:#aebdc5}
+    @media(max-width:800px){.hero-grid,.two-col,.contact-grid{grid-template-columns:1fr}.hero-grid{gap:28px}.hero-note{max-width:520px}.service-grid{grid-template-columns:1fr 1fr}.trust-inner{grid-template-columns:1fr}.two-col{gap:28px}nav{gap:12px}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}.nav{padding:17px 0;align-items:flex-start;flex-direction:column}.hero{padding:55px 0}.service-grid{grid-template-columns:1fr}.content{padding:55px 0!important}.hero .actions .btn{width:100%}form{grid-template-columns:1fr;padding:20px}.field.full,.form-foot,.form-status{grid-column:auto}.leadbox{padding:25px}}
   </style>
 </head>
 <body>
-  <main>
-    <h1>Te llevamos a PublicaTuLibroHoy.com</h1>
-    <p>Estamos redirigiéndote al sitio con recursos y orientación para publicar tu libro.</p>
-    <p>Si no ocurre automáticamente, <a href="https://www.publicatulibrohoy.com/">pulsa aquí para continuar</a>.</p>
-  </main>
+<div class="topbar"></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio">AutoPublicaHoy<span>Servicios editoriales</span></a>
+    <nav aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#recursos">Recursos</a>
+      <a class="nav-cta" href="#contacto">Solicitar evaluación</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Tu manuscrito merece llegar a buen puerto</div>
+        <h1>De manuscrito a libro, con un plan claro.</h1>
+        <p>Prepara tu libro para publicar con servicios editoriales y asesoría práctica. Revisamos lo que necesitas, definimos el alcance y te explicamos los próximos pasos antes de empezar.</p>
+        <div class="actions">
+          <a class="btn" href="#contacto">Solicitar evaluación de mi libro</a>
+          <a class="btn secondary" href="#servicios">Ver servicios y precios</a>
+        </div>
+      </div>
+      <aside class="hero-note">
+        <div class="big">01</div>
+        <h2>Empieza por saber qué te falta.</h2>
+        <p>No necesitas contratar un paquete a ciegas. Cuéntanos en qué etapa estás y te orientaremos sobre el siguiente paso razonable.</p>
+      </aside>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap trust-inner">
+      <div class="trust-item"><span class="check">✓</span><div><b>Alcance definido</b>Entregables y límites acordados antes de comenzar.</div></div>
+      <div class="trust-item"><span class="check">✓</span><div><b>Orientación práctica</b>Pasos claros para preparar y publicar tu libro.</div></div>
+      <div class="trust-item"><span class="check">✓</span><div><b>Tú conservas tus cuentas</b>Las cuentas y decisiones de publicación siguen siendo tuyas.</div></div>
+    </div>
+  </div>
+
+  <section class="content" id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Servicios editoriales</div>
+        <h2>Elige el apoyo que necesitas hoy.</h2>
+        <p>Comenzamos con tres opciones piloto. El precio definitivo se confirma después de revisar el alcance, la extensión y los requisitos de tu proyecto.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service">
+          <span class="tag">Primer paso</span>
+          <h3>Evaluación inicial</h3>
+          <div class="price">US$39–59<small>Precio piloto orientativo</small></div>
+          <p>Para autores que necesitan entender qué falta antes de publicar.</p>
+          <ul>
+            <li>Revisión breve de la etapa del proyecto.</li>
+            <li>Lista de próximos pasos recomendados.</li>
+            <li>Orientación sobre el servicio adecuado, si hace falta.</li>
+          </ul>
+          <a class="btn dark" href="#contacto" data-service="Evaluación inicial">Solicitar evaluación</a>
+        </article>
+        <article class="service featured">
+          <span class="tag">Servicio principal</span>
+          <h3>Preparación del libro</h3>
+          <div class="price">US$149–299<small>Precio piloto orientativo</small></div>
+          <p>Para preparar el interior del libro en función de la plataforma y el formato elegidos.</p>
+          <ul>
+            <li>Revisión de requisitos y alcance.</li>
+            <li>Formato interior para ebook o impresión, según lo acordado.</li>
+            <li>Entrega de los archivos incluidos en la propuesta.</li>
+          </ul>
+          <a class="btn" href="#contacto" data-service="Preparación del libro">Consultar mi proyecto</a>
+        </article>
+        <article class="service">
+          <span class="tag">Acompañamiento</span>
+          <h3>Publicación asistida</h3>
+          <div class="price">US$299–599<small>Precio piloto orientativo</small></div>
+          <p>Para autores que necesitan apoyo adicional durante el proceso de publicación.</p>
+          <ul>
+            <li>Preparación del interior según el alcance acordado.</li>
+            <li>Orientación sobre portada y archivos requeridos.</li>
+            <li>Acompañamiento para cargar archivos; el cliente conserva sus cuentas.</li>
+          </ul>
+          <a class="btn dark" href="#contacto" data-service="Publicación asistida">Hablar de mi libro</a>
+        </article>
+      </div>
+      <p class="note">Los precios son hipótesis iniciales para validar, no tarifas definitivas. Antes de aceptar un proyecto se acordarán extensión, formato, revisiones, plazo, responsabilidades y coste total. No se garantizan ventas, posicionamiento ni aceptación por parte de ninguna plataforma.</p>
+    </div>
+  </section>
+
+  <section class="content feature-band" id="proceso">
+    <div class="wrap two-col">
+      <div>
+        <div class="eyebrow">Un proceso transparente</div>
+        <h2>Primero entendemos el proyecto. Después definimos el trabajo.</h2>
+        <p>Para evitar sorpresas, no pedimos que envíes el manuscrito completo en el primer contacto. Empezamos con información básica y acordamos cómo compartir los archivos si el proyecto avanza.</p>
+        <a class="btn dark" href="#contacto">Cuéntanos qué estás preparando</a>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div><h3>Nos cuentas tu situación</h3><p>Tipo de libro, etapa actual, extensión aproximada y ayuda que buscas.</p></div></div>
+        <div class="step"><span class="step-num">2</span><div><h3>Definimos el alcance</h3><p>Revisamos qué necesitas y te proponemos entregables, precio y plazo.</p></div></div>
+        <div class="step"><span class="step-num">3</span><div><h3>Apruebas antes de empezar</h3><p>El trabajo comienza cuando aceptas las condiciones acordadas.</p></div></div>
+        <div class="step"><span class="step-num">4</span><div><h3>Recibes los entregables acordados</h3><p>Te indicamos qué archivos recibes y cuáles son los siguientes pasos.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="asesoria">
+    <div class="wrap two-col">
+      <div class="leadbox">
+        <div class="eyebrow">Asesoría individual</div>
+        <h2>Resuelve tus dudas en una sesión.</h2>
+        <p>Sesión online piloto de 45 minutos para revisar dudas concretas sobre preparación del libro, archivos, descripción, categorías o pasos de publicación.</p>
+        <ul>
+          <li>Conversación centrada en tus preguntas.</li>
+          <li>Hoja de ruta de una página con los próximos pasos acordados.</li>
+          <li>Sin obligación de contratar otro servicio.</li>
+        </ul>
+        <p><strong>Precio piloto: US$59.</strong> Se confirmará la disponibilidad, el alcance y la política de cancelación antes del pago.</p>
+        <a class="btn" href="#contacto" data-service="Asesoría individual de 45 minutos">Consultar disponibilidad</a>
+      </div>
+      <div class="resource" id="recursos">
+        <div class="eyebrow">Aprende a tu ritmo</div>
+        <h3>¿Todavía estás preparando tu libro?</h3>
+        <p>Visita nuestro sitio educativo para encontrar orientación y recursos sobre autopublicación. AutoPublicaHoy se enfoca en los servicios; PublicaTuLibroHoy es el punto de partida para aprender.</p>
+        <a href="https://www.publicatulibrohoy.com/" target="_blank" rel="noopener">Visitar PublicaTuLibroHoy.com ↗</a>
+        <hr style="border:0;border-top:1px solid var(--line);margin:23px 0">
+        <h3>Recurso gratuito en preparación</h3>
+        <p>Estamos preparando una lista de verificación con 12 puntos para revisar antes de publicar un libro. Mientras se completa, puedes solicitar una evaluación inicial para identificar tus próximos pasos.</p>
+        <a href="#contacto">Solicitar orientación ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content feature-band" id="preguntas">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Preguntas frecuentes</div>
+        <h2>Antes de contratar.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>¿Pueden garantizar que mi libro se publique?</summary><p>No. Podemos acordar entregables y orientar sobre los requisitos, pero la aceptación depende de la plataforma y del cumplimiento de sus políticas.</p></details>
+        <details><summary>¿Me garantizan ventas o posicionamiento?</summary><p>No. Las ventas dependen de factores como el contenido, el mercado, el precio, la promoción y la demanda. Ningún servicio de esta página garantiza resultados comerciales.</p></details>
+        <details><summary>¿Tengo que enviar el manuscrito completo para solicitar una evaluación?</summary><p>No en el primer contacto. Basta con explicar el tipo de libro, su etapa y su extensión aproximada. Si necesitamos archivos, acordaremos cómo compartirlos y las condiciones aplicables.</p></details>
+        <details><summary>¿Los precios publicados son definitivos?</summary><p>No. Son rangos piloto orientativos. La propuesta final dependerá de la extensión, el formato, la complejidad y los entregables que se acuerden por escrito.</p></details>
+        <details><summary>¿Tengo que contratar todos los servicios?</summary><p>No. Puedes solicitar solo una evaluación o una asesoría. Cualquier servicio adicional se propondrá por separado y requerirá tu aprobación.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="content contact" id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Primer contacto</div>
+        <h2>Cuéntanos en qué etapa está tu libro.</h2>
+        <p>Para solicitar una evaluación o consultar un servicio, completa el formulario externo. Así podremos organizar las solicitudes y responder con los próximos pasos.</p>
+        <p>No envíes el manuscrito completo ni información confidencial en el primer contacto.</p>
+        <p><strong>¿Quieres recibir consejos y recursos para autores?</strong> También puedes apuntarte a la lista de correo cuando activemos el formulario de Kit.</p>
+      </div>
+      <div class="leadbox">
+        <div class="eyebrow">Solicitudes de servicios</div>
+        <h2>Solicita una evaluación de tu libro.</h2>
+        <p>El formulario de Google recogerá los datos básicos del proyecto: tipo de libro, etapa, servicio que necesitas y forma de contacto.</p>
+        <a class="btn" id="google-form-link" href="#contacto">Abrir formulario de solicitud</a>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,.2);margin:25px 0">
+        <div class="eyebrow">Consejos y recursos</div>
+        <h3>Recibe novedades para autores.</h3>
+        <p>Kit puede servir para crear una lista de correo y enviar consejos, recursos gratuitos y ofertas de servicios a las personas que se suscriban.</p>
+        <a class="btn secondary" id="kit-form-link" href="#contacto">Suscribirme a la lista de correo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>AutoPublicaHoy</strong><p>Un servicio de Pedroso Publishing Company LLC.</p><p><a href="https://www.publicatulibrohoy.com/">Recursos educativos en PublicaTuLibroHoy.com</a></p></div>
+    <p class="disclaimer">Los servicios, precios y condiciones deben confirmarse por escrito antes de comenzar. No se garantizan ventas, ingresos, posicionamiento ni aceptación por plataformas de terceros.</p>
+  </div>
+</footer>
+
+<script>
+  // CONFIGURACIÓN PENDIENTE:
+  // Pega aquí el enlace público de tu formulario de Google Forms.
+  const GOOGLE_FORM_URL = "PEGA_AQUI_EL_ENLACE_DE_GOOGLE_FORMS";
+  // Pega aquí el enlace público de tu formulario de suscripción de Kit.com.
+  const KIT_FORM_URL = "PEGA_AQUI_EL_ENLACE_DE_KIT";
+
+  function connectExternalForm(linkId, url, placeholder, label) {
+    const link = document.getElementById(linkId);
+    link.addEventListener("click", function(event) {
+      if (!url || url === placeholder) {
+        event.preventDefault();
+        const status = document.getElementById("form-status");
+        status.textContent = "Falta configurar el enlace de " + label + ". Sustituye el marcador correspondiente en index.html antes de publicar.";
+        status.style.color = "#ffe3a8";
+        status.scrollIntoView({behavior: "smooth", block: "nearest"});
+        return;
+      }
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+    if (url && url !== placeholder) {
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener";
+    }
+  }
+
+  connectExternalForm(
+    "google-form-link",
+    GOOGLE_FORM_URL,
+    "PEGA_AQUI_EL_ENLACE_DE_GOOGLE_FORMS",
+    "Google Forms"
+  );
+  connectExternalForm(
+    "kit-form-link",
+    KIT_FORM_URL,
+    "PEGA_AQUI_EL_ENLACE_DE_KIT",
+    "Kit.com"
+  );
+</script>
 </body>
 </html>
