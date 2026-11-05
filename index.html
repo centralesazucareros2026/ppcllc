@@ -6,6 +6,14 @@
   <title>AutoPublicaHoy | Servicios editoriales para publicar tu libro</title>
   <meta name="description" content="Prepara tu manuscrito para publicar. Servicios editoriales, formato de interiores y asesoría práctica para autores independientes.">
   <meta name="theme-color" content="#142a3a">
+  <!-- Google Analytics 4: AutoPublicaHoy -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSN5XB2ZHX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NSN5XB2ZHX');
+  </script>
   <link rel="canonical" href="https://autopublicahoy.com/">
   <style>
     :root{--navy:#142a3a;--navy2:#203d50;--gold:#d4ad66;--cream:#f7f4ee;--paper:#fff;--ink:#17232c;--muted:#52616b;--line:#e2ddd3;--green:#2d6154}
@@ -350,6 +358,17 @@
     "PEGA_AQUI_EL_ENLACE_DE_KIT",
     "Kit.com"
   );
+
+  // Mide las solicitudes de información iniciadas desde las tarjetas de servicios.
+  document.querySelectorAll("[data-service]").forEach(function(link) {
+    link.addEventListener("click", function() {
+      if (typeof gtag === "function") {
+        gtag("event", "service_interest", {
+          service_name: link.getAttribute("data-service")
+        });
+      }
+    });
+  });
 </script>
 </body>
 </html>
